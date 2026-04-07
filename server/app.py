@@ -20,7 +20,8 @@ def health():
     return {"status": "ok", "version": "1.0.0", "env": "mailtriage-env"}
 
 @app.post("/reset", response_model=EmailObservation)
-def reset(request: ResetRequest):
+def reset(request: Optional[ResetRequest] = None):
+    request = request or ResetRequest()
     global _env
     with _lock:
         _env = MailTriageEnv()
