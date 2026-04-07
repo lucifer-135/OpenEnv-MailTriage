@@ -1,0 +1,37 @@
+name: mailtriage-env
+version: "1.0.0"
+description: >
+  A real-world business email triage and response simulation environment
+  for training and evaluating AI agents on inbox management tasks including
+  classification, routing, escalation, and context-aware reply drafting.
+domain: email-management
+author: mailtriage-team
+tasks:
+  - name: classify_inbox
+    difficulty: easy
+    description: "Classify 5 emails by category and priority"
+    max_steps: 15
+    success_threshold: 0.80
+  - name: triage_and_respond
+    difficulty: medium
+    description: "Classify 10 emails and draft context-aware replies"
+    max_steps: 30
+    success_threshold: 0.70
+  - name: inbox_zero_with_policy
+    difficulty: hard
+    description: "Process 20 emails under 5 strict enterprise policy rules"
+    max_steps: 50
+    success_threshold: 0.65
+observation_type: structured
+action_type: structured
+reward_range: [-1.0, 1.0]
+reset_endpoint: /reset
+step_endpoint: /step
+state_endpoint: /state
+close_endpoint: /close
+tags:
+  - openenv
+  - email-triage
+  - agent-eval
+  - rl-environment
+  - business-productivity
